@@ -71,6 +71,13 @@ class InstallCommand extends Command
             copy(__DIR__ . '/../../resources/stubs/routes.php', base_path('routes/web.php'));
 
             copy(__DIR__ . '/../../resources/stubs/controllers/UserController.php', app_path('Http/Controllers/UserController.php'));
+            copy(__DIR__ . '/../../resources/stubs/controllers/FileController.php', app_path('Http/Controllers/FileController.php'));
+
+            (new Filesystem)->ensureDirectoryExists(app_path('Models'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/models', app_path('Models'));
+
+            (new Filesystem)->ensureDirectoryExists(database_path('migrations'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/migrations', database_path('migrations'));
 
             (new Filesystem)->ensureDirectoryExists(app_path('Http/Requests'));
             (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/requests', app_path('Http/Requests/'));
@@ -102,6 +109,13 @@ class InstallCommand extends Command
             copy(__DIR__ . '/../../resources/stubs/breeze/inertia/routes.php', base_path('routes/web.php'));
 
             copy(__DIR__ . '/../../resources/stubs/breeze/inertia/controllers/UserController.php', app_path('Http/Controllers/UserController.php'));
+            copy(__DIR__ . '/../../resources/stubs/controllers/FileController.php', app_path('Http/Controllers/FileController.php'));
+
+            (new Filesystem)->ensureDirectoryExists(app_path('Models'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/models', app_path('Models'));
+
+            (new Filesystem)->ensureDirectoryExists(database_path('migrations'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/migrations', database_path('migrations'));
 
             (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/breeze/inertia/Middleware', app_path('Http/Middleware/'));
 
@@ -138,6 +152,12 @@ class InstallCommand extends Command
             );
 
             (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/controllers', app_path('Http/Controllers/'));
+
+            (new Filesystem)->ensureDirectoryExists(app_path('Models'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/models', app_path('Models'));
+
+            (new Filesystem)->ensureDirectoryExists(database_path('migrations'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/migrations', database_path('migrations'));
 
             (new Filesystem)->ensureDirectoryExists(app_path('Http/Requests'));
             (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/requests', app_path('Http/Requests/'));
@@ -206,6 +226,8 @@ class InstallCommand extends Command
         // Demo table
         (new Filesystem)->ensureDirectoryExists(resource_path('views/users'));
         copy(__DIR__ . '/../../resources/stubs/breeze/windmill/views/users/index.blade.php', resource_path('views/users/index.blade.php'));
+        (new Filesystem)->ensureDirectoryExists(resource_path('views/files'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views/files', resource_path('views/files'));
         (new Filesystem)->ensureDirectoryExists(resource_path('views/vendor/pagination'));
         copy(__DIR__ . '/../../resources/stubs/breeze/windmill/views/pagination/tailwind.blade.php', resource_path('views/vendor/pagination/tailwind.blade.php'));
 
@@ -239,6 +261,9 @@ class InstallCommand extends Command
         (new Filesystem)->ensureDirectoryExists(resource_path('views/users'));
         copy(__DIR__ . '/../../resources/stubs/breeze/notusjs/views/users/index.blade.php', resource_path('views/users/index.blade.php'));
 
+        (new Filesystem)->ensureDirectoryExists(resource_path('views/files'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views/files', resource_path('views/files'));
+
         $this->runCommands(['npm install', 'npm run build']);
         $this->components->info('Breeze scaffolding replaced successfully.');
     }
@@ -263,6 +288,9 @@ class InstallCommand extends Command
         // Demo table
         (new Filesystem)->ensureDirectoryExists(resource_path('views/users'));
         copy(__DIR__ . '/../../resources/stubs/breeze/tailwindcomponents/views/users/index.blade.php', resource_path('views/users/index.blade.php'));
+
+        (new Filesystem)->ensureDirectoryExists(resource_path('views/files'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views/files', resource_path('views/files'));
 
         $this->runCommands(['npm install', 'npm run build']);
         $this->components->info('Breeze scaffolding replaced successfully.');
@@ -309,6 +337,9 @@ class InstallCommand extends Command
         (new Filesystem)->ensureDirectoryExists(resource_path('views/users'));
         copy(__DIR__ . '/../../resources/stubs/ui/adminlte/views/users/index.blade.php', resource_path('views/users/index.blade.php'));
 
+        (new Filesystem)->ensureDirectoryExists(resource_path('views/files'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views/files', resource_path('views/files'));
+
         $this->runCommands(['npm install', 'npm run build']);
         $this->components->info('Laravel UI scaffolding replaced successfully.');
     }
@@ -348,6 +379,9 @@ class InstallCommand extends Command
         // Demo table
         (new Filesystem)->ensureDirectoryExists(resource_path('views/users'));
         copy(__DIR__ . '/../../resources/stubs/ui/coreui/views/users/index.blade.php', resource_path('views/users/index.blade.php'));
+
+        (new Filesystem)->ensureDirectoryExists(resource_path('views/files'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views/files', resource_path('views/files'));
 
         $this->runCommands(['npm install', 'npm run build']);
         $this->components->info('Laravel UI scaffolding replaced successfully.');
@@ -421,6 +455,9 @@ class InstallCommand extends Command
         (new Filesystem)->ensureDirectoryExists(resource_path('views/users'));
         copy(__DIR__ . '/../../resources/stubs/ui/plainadmin/views/users/index.blade.php', resource_path('views/users/index.blade.php'));
 
+        (new Filesystem)->ensureDirectoryExists(resource_path('views/files'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views/files', resource_path('views/files'));
+
         $this->runCommands(['npm install', 'npm run build']);
         $this->components->info('Laravel UI scaffolding replaced successfully.');
     }
@@ -485,6 +522,9 @@ class InstallCommand extends Command
         (new Filesystem)->ensureDirectoryExists(resource_path('views/users'));
         copy(__DIR__ . '/../../resources/stubs/ui/voltbs5/views/users/index.blade.php', resource_path('views/users/index.blade.php'));
 
+        (new Filesystem)->ensureDirectoryExists(resource_path('views/files'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views/files', resource_path('views/files'));
+
         $this->runCommands(['npm install', 'npm run build']);
         $this->components->info('Laravel UI scaffolding replaced successfully.');
     }
@@ -527,6 +567,9 @@ class InstallCommand extends Command
         (new Filesystem)->ensureDirectoryExists(resource_path('views/users'));
         copy(__DIR__ . '/../../resources/stubs/ui/sb-admin-2/views/users/index.blade.php', resource_path('views/users/index.blade.php'));
 
+        (new Filesystem)->ensureDirectoryExists(resource_path('views/files'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views/files', resource_path('views/files'));
+
         $this->runCommands(['npm install', 'npm run build']);
         $this->components->info('Laravel UI scaffolding replaced successfully.');
     }
@@ -559,6 +602,9 @@ class InstallCommand extends Command
         // Demo table
         (new Filesystem)->ensureDirectoryExists(resource_path('views/users'));
         (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/ui/tabler/views/users', resource_path('views/users'));
+
+        (new Filesystem)->ensureDirectoryExists(resource_path('views/files'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/stubs/views/files', resource_path('views/files'));
 
         // Assets
         (new Filesystem)->ensureDirectoryExists(public_path('img')); // juste Tabler logo
